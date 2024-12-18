@@ -1,0 +1,166 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Vidência do Galerito</title>
+    <style>
+        /* Reset geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corpo da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4a9b62, #1c3f2e);
+            color: #f0f8f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Container principal */
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #a6f5c2;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #72cc86;
+        }
+
+        /* Botão */
+        button {
+            background-color: #72cc86;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #4a9b62;
+            transform: scale(1.05);
+        }
+
+        /* Efeitos de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }}
+
+  /* Fundo com partículas animadas */
+            @keyframes floating {
+            0% { transform: translateY(0); opacity: 0.7; }
+            50% { transform: translateY(-20px); opacity: 0.3; }
+            100% { transform: translateY(0); opacity: 0.7; }
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: floating 5s infinite ease-in-out;
+        }
+
+        /* Criação de múltiplas partículas */
+        .particle:nth-child(1) { width: 10px; height: 10px; top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 20px; height: 20px; top: 30%; left: 50%; animation-delay: 1s; }
+        .particle:nth-child(3) { width: 15px; height: 15px; top: 70%; left: 10%; animation-delay: 2s; }
+        .particle:nth-child(4) { width: 8px; height: 8px; top: 50%; left: 80%; animation-delay: 3s; }
+        .particle:nth-child(5) { width: 12px; height: 12px; top: 80%; left: 40%; animation-delay: 4s; }
+
+    </style>
+</head>
+<body>
+     <!-- Partículas animadas no fundo -->
+     <div class="particle"></div>
+     <div class="particle"></div>
+     <div class="particle"></div>
+     <div class="particle"></div>
+     <div class="particle"></div>
+
+    <div class="container">
+        <h1>Bem-vindo ao Site de Vidência do Galerito!</h1>
+        <p id="intro">Sou vidente de verdade, você vai ver só!</p>
+        <button onclick="startPrediction()">Clique para começar a vidência</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function startPrediction() {
+            const intro = document.getElementById("intro");
+            const result = document.getElementById("result");
+
+            // Perguntas iniciais
+            const genero = prompt("Qual é o seu gênero? Digite:\n1 - Masculino\n2 - Feminino\n3 - Prefiro não dizer");
+            let pronome, pronomePossessivo, generoTexto, comentarioGenero;
+
+            if (genero == "1") {
+                pronome = "ele";
+                pronomePossessivo = "dele";
+                generoTexto = "masculino";
+                comentarioGenero = "Você é do time dos cavaleiros de armadura brilhante, hein? Só cuidado para não enferrujar!";
+            } else if (genero == "2") {
+                pronome = "ela";
+                pronomePossessivo = "dela";
+                generoTexto = "feminino";
+                comentarioGenero = "Olha só, uma dama de presença! Aposto que deixou até o site mais bonito.";
+            } else {
+                pronome = "elu";
+                pronomePossessivo = "delu";
+                generoTexto = "neutro";
+                comentarioGenero = "Optou pelo gênero neutro? Muito estilose, como sempre!";
+            }
+
+            const nome = prompt("Qual é o seu nome?");
+            const idade = Number(prompt(`Prazer, ${nome}! Quantos anos você tem?`));
+
+            // Resultado dinâmico
+            intro.style.display = "none"; // Esconde o texto inicial
+            result.innerHTML = `
+                <p>Seu nome é <strong>${nome}</strong> e você se identifica com o gênero <strong>${generoTexto}</strong>.</p>
+                <p>${comentarioGenero}</p>
+                <p>Seu nome tem <strong>${nome.length}</strong> letras, sabia? E fica assim em maiúsculas: <strong>${nome.toUpperCase()}</strong>.</p>
+                <p>Se meus cálculos estiverem certos, você tem <strong>${idade} anos</strong>.</p>
+                <p>E daqui a 100 anos... terá <strong>${idade + 100}</strong>! Que tal pensar no futuro?</p>
+            `;
+        }
+    </script>
+</body>
+</html>
